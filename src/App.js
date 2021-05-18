@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from 'react-bootstrap'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Signup from './Components/Signup'
+import Main from './Components/Main'
+import Login from './Components/Login';
+import { history } from './helper/history'
+// import { AuthProvider } from './Context/authContext'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <AuthProvider>
+    <Router>
+      <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+        <div style={{ maxWidth: '400px' }} className="w-100">
+          {/* <Signup /> */}
+          <Switch>
+            <Route path="/" exact component={Main} />
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/login" exact component={Login} />
+          </Switch>
+        </div>
+      </Container>
+    </Router>
+
+    // </AuthProvider>
+
   );
 }
 
